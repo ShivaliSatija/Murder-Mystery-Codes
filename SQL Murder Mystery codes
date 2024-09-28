@@ -1,0 +1,34 @@
+SELECT * FROM crime_scene_report
+WHERE	
+date= '20180115' AND type= 'murder' AND city= 'SQL City'
+SELECT * FROM person
+WHERE
+address_street_name= 'Northwestern Dr'
+ORDER BY address_number DESC
+SELECT * FROM person
+WHERE
+address_street_name= 'Franklin Ave' AND name LIKE '%Annabel%
+SELECT * FROM interview
+WHERE
+person_id= '16371'
+SELECT * FROM get_fit_now_member
+WHERE 	
+membership_status= 'gold' AND id LIKE '48Z%'
+SELECT p.id, p.name, p.license_id, d.plate_number
+FROM person p
+left JOIN drivers_license d ON d.id= p.license_id
+WHERE 
+plate_number LIKE '%H42W%' AND p.id IN ('28819', '67318')
+SELECT * FROM interview
+WHERE
+person_id='67318'
+SELECT p.id, p.name, f.event_name, f.date, d.height, d.hair_color, d.car_make, d.car_model
+FROM person p
+left JOIN facebook_event_checkin f ON f.person_id= p.id
+left JOIN drivers_license d ON d.id= p.license_id
+WHERE
+d.height BETWEEN 65 AND 67 AND
+hair_color= 'red'AND
+car_make= 'Tesla' AND
+car_model= 'Model S' AND
+event_name= 'SQL Symphony Concert'
